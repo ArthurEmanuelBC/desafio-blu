@@ -1,0 +1,57 @@
+<%- model_class = Transaction -%>
+<div class="page-header">
+  <h1>Relatório de Transações Financeiras</h1>
+</div>
+
+<% if flash[:notice] %>
+  <div class="alert alert-<%= flash[:notice_class] %>" role="alert"><%= flash[:notice].html_safe %></div>
+<%- end %>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Tipo</th>
+      <th>Data e Hora</th>
+      <th>Valor</th>
+      <th>CPF</th>
+      <th>Cartão</th>
+      <th>Dono da Loja</th>
+      <th>Nome da Loja</th>
+      <th>Saldo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @transactions.each do |store,transactions| %>
+      <tr>
+        <td colspan="8" class="title"><%= store %></td>
+      </tr>
+      <% transactions.each do |transaction| %>
+        <tr>
+          <td><%= transaction['transaction_type']&.code %></td>
+          <td><%= transaction['date'].strftime("%d/%m/%Y %H:%M:%S") %></td>
+          <td><%= number_to_currency transaction['value'], unit: "R$ ", separator: ",", delimiter: "." %></td>
+          <td><%= transaction['cpf'] %></td>
+          <td><%= transaction['card'] %></td>
+          <td><%= transaction['store_owner'] %></td>
+          <td><%= transaction['store'] %></td>
+          <td><%= number_to_currency transaction['balance'], unit: "R$ ", separator: ",", delimiter: "." %></td>
+        </tr>
+      <% end %>
+
+      <tr class="sum">
+        <td colspan="7">SALDO (<%= store %>):</td>
+        <td align="left"><%= number_to_currency @store_balance[store], unit: "R$ ", separator: ",", delimiter: "." %></td>
+      </tr>
+    <% end %>
+
+    <% unless @transactions.empty? %>
+      <tr class="sum">
+        <td colspan="7">SALDO GERAL:</td>
+        <td align="left"><%= number_to_currency @total_balance, unit: "R$ ", separator: ",", delimiter: "." %></td>
+      </tr>
+    <% end %>
+
+  </tbody>
+</table>
+
+<%= link_to "Importar Transações", new_transaction_path, :class => 'btn btn-primary' %>

@@ -1,0 +1,9 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: blu
+  host: localhost
+  pool: 5
+  port: 5432
+  username: postgres
+  password: mypassword
