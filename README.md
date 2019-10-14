@@ -13,13 +13,13 @@ Para rodar a aplicação após recuperá-la pelo arquivo patch, é preciso:
 1. Ir no arquivo database.yml e colocar as credenciais corretas do seu PostgreSQL.
 
 2. Criar o banco de dados:
-- * *rake db:create* *
+- *rake db:create*
 
 3. Rodar as migrações para criar as tabelas:
-- * *rake db:migrate* *
+- *rake db:migrate*
 
 4. Rodar o seed para popular a tabela de tipos de transações com seus valores padrão e também um usuário padrão.
-- * *rake db:seed* *
+- *rake db:seed*
 
 ## Observações:
 
