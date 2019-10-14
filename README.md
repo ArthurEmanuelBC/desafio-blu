@@ -1,12 +1,12 @@
 # Desafio - Arthur Emanuel Brandão Carvalho
 
-** A aplicação usa as seguintes tecnologias: **
+## A aplicação usa as seguintes tecnologias:
 
 Ruby 2.4.3
 Rails 5.2.3
 PostgreSQL
 
-** Instruções para rodar a aplicação do desafio **
+## Instruções para rodar a aplicação do desafio
 
 Para rodar a aplicação após recuperá-la pelo arquivo patch, é preciso:
 
@@ -21,7 +21,7 @@ Para rodar a aplicação após recuperá-la pelo arquivo patch, é preciso:
 4 - Rodar o seed para popular a tabela de tipos de transações com seus valores padrão e também um usuário padrão.
 * rake db:seed
 
-** Observações: **
+**Observações:**
 
 Os valores padrão da tabela de tipos de transações são iguais aos descritos no projeto.
 Utilizei autenticação básica, com devise.
